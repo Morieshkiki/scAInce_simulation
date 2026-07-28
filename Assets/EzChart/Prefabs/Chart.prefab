@@ -1,0 +1,356 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1251252945648842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224194816693436920}
+  - component: {fileID: 114720741266098470}
+  - component: {fileID: 114397642427736120}
+  - component: {fileID: 114291916322741314}
+  m_Layer: 5
+  m_Name: Chart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &224194816693436920
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251252945648842}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &114720741266098470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251252945648842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae2aa038f66c314a9a072bbf4b9bc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chartOptions: {fileID: 114397642427736120}
+  chartData: {fileID: 114291916322741314}
+  chartType: 0
+  updateOnAwake: 1
+--- !u!114 &114397642427736120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251252945648842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db2545491a8ab04f9052831b894161f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plotOptions:
+    cultureInfoName: 
+    dataColor:
+    - {r: 0.49019608, g: 0.7058824, b: 0.9411765, a: 1}
+    - {r: 1, g: 0.49019608, b: 0.3137255, a: 1}
+    - {r: 0.5647059, g: 0.92941177, b: 0.49019608, a: 1}
+    - {r: 0.96862745, g: 0.6392157, b: 0.36078432, a: 1}
+    - {r: 0.5019608, g: 0.52156866, b: 0.9137255, a: 1}
+    - {r: 0.94509804, g: 0.36078432, b: 0.5019608, a: 1}
+    - {r: 0.89411765, g: 0.827451, b: 0.32941177, a: 1}
+    - {r: 0.16862746, g: 0.5647059, b: 0.56078434, a: 1}
+    - {r: 0.95686275, g: 0.35686275, b: 0.35686275, a: 1}
+    - {r: 0.74509805, g: 0.43137255, b: 0.9411765, a: 1}
+    - {r: 0.6666667, g: 0.9411765, b: 0.9411765, a: 1}
+    generalFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    inverted: 0
+    mouseTracking: 1
+    frontGrid: 0
+    columnStacking: 0
+    itemHighlightColor: {r: 0.6784314, g: 0.85882354, b: 0.93333334, a: 0.39215687}
+    enableBackground: 1
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    barChartOption:
+      colorByCategories: 0
+      barWidth: 10
+      itemSeparation: 3
+      enableBarBackground: 0
+      barBackgroundWidth: 10
+      barBackgroundColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.2}
+      barGradientStartIntensity: 0
+      barGradientStartColor: {r: 1, g: 1, b: 1, a: 1}
+      barGradientEndIntensity: 0
+      barGradientEndColor: {r: 1, g: 1, b: 1, a: 1}
+    lineChartOption:
+      pointSize: 10
+      enableLine: 1
+      lineWidth: 5
+      enableShade: 0
+      shadeOpacity: 0.7
+      enablePointOutline: 0
+      pointOutlineWidth: 2
+      pointOutlineColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+      splineCurve: 0
+    pieChartOption:
+      itemSeparation: 0
+    roseChartOption:
+      colorByCategories: 0
+      barWidth: 10
+      itemSeparation: 3
+    radarChartOption:
+      pointSize: 10
+      enableLine: 1
+      lineWidth: 5
+      enableShade: 0
+      shadeOpacity: 0.7
+      enablePointOutline: 0
+      pointOutlineWidth: 2
+      pointOutlineColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+      circularGrid: 0
+    gaugeOption:
+      pointerLengthScale: 1
+      pointerWidth: 4
+      pointerColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      bands: []
+      bandWidth: 10
+    solidGaugeOption:
+      barWidth: 10
+      enableBarBackground: 0
+      barBackgroundWidth: 10
+      barBackgroundColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.2}
+  title:
+    enableMainTitle: 1
+    mainTitle: Main Title
+    mainTitleOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 18
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    enableSubTitle: 0
+    subTitle: Sub Title
+    subTitleOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 12
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+  xAxis:
+    reversed: 0
+    enableAxisLine: 1
+    axisLineColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+    axisLineWidth: 2
+    enableGridLine: 1
+    gridLineColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    gridLineWidth: 1
+    enableTick: 1
+    tickColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+    tickSize: {x: 2, y: 4}
+    enableTitle: 0
+    title: xAxis
+    titleOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    enableLabel: 1
+    labelFormat: '{value}'
+    labelNumericFormat: 
+    labelOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 12
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    autoRotateLabel: 1
+    type: 0
+    autoAxisValues: 1
+    interval: -1
+    axisDivision: 4
+    min: 0
+    max: 100
+    minPadding: 0
+    maxPadding: 10
+  yAxis:
+    mirrored: 0
+    enableAxisLine: 1
+    axisLineColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+    axisLineWidth: 2
+    enableGridLine: 0
+    gridLineColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    gridLineWidth: 1
+    enableTick: 0
+    tickColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+    tickSize: {x: 2, y: 4}
+    enableTitle: 0
+    title: yAxis
+    titleOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    enableLabel: 1
+    absoluteValue: 0
+    labelFormat: '{value}'
+    labelNumericFormat: 
+    labelOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 12
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    autoAxisValues: 1
+    startFromZero: 1
+    axisDivision: 4
+    min: 0
+    max: 100
+    minPadding: 0
+    maxPadding: 10
+  pane:
+    enableOuterBorder: 1
+    outerBorderColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+    outerBorderWidth: 2
+    enableInnerBorder: 1
+    innerBorderColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+    innerBorderWidth: 2
+    innerSize: 0
+    outerSize: 1
+    startAngle: 0
+    endAngle: 360
+    semicircle: 0
+  tooltip:
+    enable: 1
+    share: 1
+    absoluteValue: 0
+    headerFormat: '{category}'
+    pointFormat: '{series.name}: {data.value}'
+    pointNumericFormat: 
+    textOption:
+      color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    backgroundColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.7}
+  legend:
+    enable: 1
+    alignment: 7
+    itemLayout: 0
+    horizontalRows: 1
+    format: '{series.name}'
+    numericFormat: 
+    textOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    enableIcon: 1
+    iconImage:
+    - {fileID: 21300000, guid: afa26bf056eac2d4a998668edd26ba17, type: 3}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    highlightColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.7}
+    dimmedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  label:
+    enable: 0
+    absoluteValue: 0
+    format: '{data.value}'
+    numericFormat: 
+    textOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    anchoredPosition: 1
+    offset: 12
+    rotation: 0
+    bestFit: 1
+--- !u!114 &114291916322741314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251252945648842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f4c4d6e37b338458bdbbdc1c2f0a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  series:
+  - name: series 1
+    show: 1
+    colorIndex: -1
+    data:
+    - show: 1
+      value: 10
+      x: 0
+    - show: 1
+      value: 20
+      x: 0
+    - show: 1
+      value: 13
+      x: 0
+    - show: 1
+      value: 12
+      x: 0
+    - show: 1
+      value: 20
+      x: 0
+  - name: series 2
+    show: 1
+    colorIndex: -1
+    data:
+    - show: 1
+      value: 14
+      x: 0
+    - show: 1
+      value: 25
+      x: 0
+    - show: 1
+      value: 33
+      x: 0
+    - show: 1
+      value: 25
+      x: 0
+    - show: 1
+      value: 24
+      x: 0
+  - name: series 3
+    show: 1
+    colorIndex: -1
+    data:
+    - show: 1
+      value: 24
+      x: 0
+    - show: 1
+      value: 38
+      x: 0
+    - show: 1
+      value: 14
+      x: 0
+    - show: 1
+      value: 27
+      x: 0
+    - show: 1
+      value: 17
+      x: 0
+  categories:
+  - Cate01
+  - Cate02
+  - Cate03
+  - Cate04
+  - Cate05

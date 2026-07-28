@@ -1,0 +1,224 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c05126db5c6f3d46af3917ce6a9c860, type: 3}
+  m_Name: ChartOptionsPreset_LightGray_FullGrid
+  m_EditorClassIdentifier: 
+  plotOptions:
+    cultureInfoName: 
+    dataColor:
+    - {r: 0.18285038, g: 0.47325066, b: 0.6544118, a: 1}
+    - {r: 0.722, g: 0.216, b: 0.278, a: 1}
+    - {r: 0.14684257, g: 0.616, b: 0.534, a: 1}
+    - {r: 0.34350425, g: 0.7647059, b: 0.18555363, a: 1}
+    - {r: 0.2846561, g: 0.35113123, b: 0.5955882, a: 1}
+    - {r: 0.5808823, g: 0.28034687, b: 0.23064446, a: 1}
+    - {r: 0.875, g: 0.7459269, b: 0.22518383, a: 1}
+    - {r: 0.153, g: 0.534, b: 0.559, a: 1}
+    - {r: 1, g: 0.441, b: 0.616, a: 1}
+    - {r: 0.6090853, g: 0.41230538, b: 0.9044118, a: 1}
+    - {r: 0.7374744, g: 0.7647059, b: 0.68598616, a: 1}
+    generalFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    inverted: 0
+    mouseTracking: 1
+    frontGrid: 0
+    columnStacking: 0
+    itemHighlightColor: {r: 0.6784314, g: 0.85882354, b: 0.93333334, a: 0.39215687}
+    enableBackground: 1
+    backgroundColor: {r: 0.9191176, g: 0.9191176, b: 0.9191176, a: 1}
+    barChartOption:
+      colorByCategories: 0
+      barWidth: 10
+      itemSeparation: 3
+      enableBarBackground: 0
+      barBackgroundWidth: 10
+      barBackgroundColor: {r: 0.6397059, g: 0.6397059, b: 0.6397059, a: 0.2}
+      barGradientStartIntensity: 0
+      barGradientStartColor: {r: 1, g: 1, b: 1, a: 1}
+      barGradientEndIntensity: 0
+      barGradientEndColor: {r: 1, g: 1, b: 1, a: 1}
+    lineChartOption:
+      pointSize: 10
+      enableLine: 1
+      lineWidth: 5
+      enableShade: 0
+      shadeOpacity: 0.7
+      enablePointOutline: 0
+      pointOutlineWidth: 1
+      pointOutlineColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+      splineCurve: 0
+    pieChartOption:
+      itemSeparation: 0
+    roseChartOption:
+      colorByCategories: 0
+      barWidth: 10
+      itemSeparation: 3
+    radarChartOption:
+      pointSize: 10
+      enableLine: 1
+      lineWidth: 5
+      enableShade: 0
+      shadeOpacity: 0.7
+      enablePointOutline: 0
+      pointOutlineWidth: 1
+      pointOutlineColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+      circularGrid: 0
+    gaugeOption:
+      pointerLengthScale: 1
+      pointerWidth: 4
+      pointerColor: {r: 0.3897059, g: 0.3897059, b: 0.3897059, a: 1}
+      bands: []
+      bandWidth: 10
+    solidGaugeOption:
+      barWidth: 10
+      enableBarBackground: 0
+      barBackgroundWidth: 10
+      barBackgroundColor: {r: 0.6397059, g: 0.6397059, b: 0.6397059, a: 0.2}
+  title:
+    enableMainTitle: 1
+    mainTitle: Main Title
+    mainTitleOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 18
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    enableSubTitle: 0
+    subTitle: Sub Title
+    subTitleOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 12
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+  xAxis:
+    reversed: 0
+    enableAxisLine: 1
+    axisLineColor: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
+    axisLineWidth: 2
+    enableGridLine: 1
+    gridLineColor: {r: 0.78676474, g: 0.78676474, b: 0.78676474, a: 1}
+    gridLineWidth: 1
+    enableTick: 1
+    tickColor: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
+    tickSize: {x: 2, y: 4}
+    enableTitle: 0
+    title: xAxis
+    titleOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    enableLabel: 1
+    labelFormat: '{value}'
+    labelNumericFormat: 
+    labelOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 12
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    autoRotateLabel: 1
+    type: 0
+    autoAxisValues: 1
+    interval: -1
+    axisDivision: 4
+    min: 0
+    max: 100
+    minPadding: 0
+    maxPadding: 10
+  yAxis:
+    mirrored: 0
+    enableAxisLine: 1
+    axisLineColor: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
+    axisLineWidth: 2
+    enableGridLine: 1
+    gridLineColor: {r: 0.78676474, g: 0.78676474, b: 0.78676474, a: 1}
+    gridLineWidth: 1
+    enableTick: 1
+    tickColor: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
+    tickSize: {x: 2, y: 4}
+    enableTitle: 0
+    title: yAxis
+    titleOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    enableLabel: 1
+    absoluteValue: 0
+    labelFormat: '{value}'
+    labelNumericFormat: 
+    labelOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 12
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    autoAxisValues: 1
+    startFromZero: 1
+    axisDivision: 4
+    min: 0
+    max: 100
+    minPadding: 0
+    maxPadding: 10
+  pane:
+    enableOuterBorder: 1
+    outerBorderColor: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
+    outerBorderWidth: 2
+    enableInnerBorder: 1
+    innerBorderColor: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
+    innerBorderWidth: 2
+    innerSize: 0
+    outerSize: 1
+    startAngle: 0
+    endAngle: 360
+    semicircle: 0
+  tooltip:
+    enable: 1
+    share: 1
+    absoluteValue: 0
+    headerFormat: '{category}'
+    pointFormat: '{series.name}: {data.value}'
+    pointNumericFormat: 
+    textOption:
+      color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    backgroundColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.7}
+  legend:
+    enable: 1
+    alignment: 7
+    itemLayout: 0
+    horizontalRows: 1
+    format: '{series.name}'
+    numericFormat: 
+    textOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    enableIcon: 1
+    iconImage: []
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    highlightColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.7}
+    dimmedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  label:
+    enable: 0
+    absoluteValue: 0
+    format: '{data.value}'
+    numericFormat: 
+    textOption:
+      color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      fontSize: 14
+      font: {fileID: 0}
+      customizedText: {fileID: 0}
+    anchoredPosition: 1
+    offset: 12
+    rotation: 0
+    bestFit: 1
