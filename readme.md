@@ -36,12 +36,16 @@ A three-stage pipeline on a single machine:
 - **The bridge** is a Python process built on the [Sumonity](https://github.com/TUM-VT/Sumonity)
   interface (Pechinger & Lindner, 2024), adapted for this project. It opens a local
   TCP server on port `25001`, starts SUMO through TraCI, then on each iteration
-  advances the simulation by one time step of 0.1 s, reads the position, heading,
-  speed and class of every vehicle, and streams that state to Unity — roughly twenty
-  updates per second.
+  advances the simulation by one time step of `--dt` (0.1 s by default, matching the
+  `step-length` in `opensource.sumocfg`), reads the position, heading, speed and
+  class of every vehicle, and publishes that state — so **10 new vehicle states per
+  second**. A separate socket thread transmits the latest state to Unity.
 - **Unity** is the client. It connects to the socket, spawns one object per vehicle
-  chosen by the class SUMO reports, and smooths the received positions so vehicles
-  glide between updates instead of snapping.
+  chosen by the class SUMO reports, and interpolates between the received poses so
+  vehicles glide between updates instead of snapping. The interpolation window is an
+  exponential average of the observed update interval, which keeps motion smooth when
+  packet timing jitters. It never extrapolates past the last known SUMO pose, so a
+  late packet cannot push a vehicle through a wall.
 
 Startup order matters: the bridge begins listening first, then Unity connects.
 

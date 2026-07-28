@@ -36,10 +36,16 @@ namespace tumvt.sumounity
 
         private SumoSocketClient sock;
 
+        [Tooltip("Interpolation window in seconds. Leave at 0 to adapt automatically to the observed SUMO update rate (recommended). Set e.g. 0.1 to pin it to the bridge's --dt.")]
+        public float fixedInterpolationWindow = 0f;
+        [Tooltip("Widens the interpolation window slightly so a packet arriving a little late does not leave the vehicle standing still before it lands. 1.0 = no slack.")]
+        [Range(1f, 1.5f)] public float intervalSlack = 1.15f;
+
         private bool initialized = false;
         private float lastStepTime = -1f;   // SUMO sim time of the last consumed update
         private float stepWallTime = 0f;    // Time.time when that update was received
-        private float stepInterval = 0.1f;  // measured real seconds between updates
+        private float stepInterval = 0.1f;  // SMOOTHED real seconds between updates
+        private bool hasIntervalEstimate = false;
         private Vector3 prevPos, targetPos;
         private Quaternion prevRot, targetRot;
 
@@ -84,10 +90,19 @@ namespace tumvt.sumounity
 
             if (!Mathf.Approximately(stepTime, lastStepTime))
             {
-                // A new SUMO step arrived: ease from where we ARE to the new target
-                // over however long the previous step actually took (clamped).
+                // A new SUMO step arrived: ease from where we ARE to the new target.
+                //
+                // The window is a SMOOTHED average of the observed packet gaps, not the
+                // single previous gap. Trusting one measurement made the window track
+                // network jitter: whenever the next gap ran longer than the last, u
+                // saturated early, the vehicle arrived and stood still until the next
+                // packet, then snapped - the visible stutter. An exponential average
+                // converges on the real cadence (0.1 s at the bridge's default --dt)
+                // and stops the jitter feeding back into the motion.
                 float now = Time.time;
-                stepInterval = Mathf.Clamp(now - stepWallTime, 0.02f, 3f);
+                float gap = Mathf.Clamp(now - stepWallTime, 0.02f, 3f);
+                if (!hasIntervalEstimate) { stepInterval = gap; hasIntervalEstimate = true; }
+                else stepInterval = Mathf.Lerp(stepInterval, gap, 0.15f);
                 stepWallTime = now;
                 lastStepTime = stepTime;
                 prevPos = transform.position;
@@ -102,7 +117,10 @@ namespace tumvt.sumounity
                 targetRot = sumoRot;
             }
 
-            float u = Mathf.Clamp01((Time.time - stepWallTime) / stepInterval);
+            // Clamp01 is deliberate: never extrapolate past the last known SUMO pose,
+            // so a late packet can never push a vehicle through a wall or another car.
+            float window = (fixedInterpolationWindow > 0f ? fixedInterpolationWindow : stepInterval) * intervalSlack;
+            float u = Mathf.Clamp01((Time.time - stepWallTime) / Mathf.Max(window, 0.0001f));
             transform.position = Vector3.Lerp(prevPos, targetPos, u);
             transform.rotation = Quaternion.Slerp(prevRot, targetRot, u);
 
