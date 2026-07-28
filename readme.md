@@ -26,11 +26,6 @@ test case without requiring a large network.
 
 A three-stage pipeline on a single machine:
 
-```
-   SUMO  ──TraCI──▶  Python bridge  ──TCP :25001──▶  Unity
-(traffic authority)   (0.1 s steps)                  (rendering + drivable car)
-```
-
 - **SUMO** runs the microscopic simulation and remains the single source of truth
   for the traffic.
 - **The bridge** is a Python process built on the [Sumonity](https://github.com/TUM-VT/Sumonity)
