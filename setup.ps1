@@ -1,4 +1,4 @@
-# Automated setup script for TUM Main Campus Unity Project
+# Automated setup script for the scAInce Luisenplatz Unity project
 
 # Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
 
