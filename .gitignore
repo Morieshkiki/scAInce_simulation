@@ -69,6 +69,9 @@ sysinfo.txt
 *.apk
 *.aab
 *.unitypackage
+# ...and their .meta files, otherwise a clone gets orphaned metas pointing at
+# assets that were never committed, and Unity deletes them on first import.
+*.unitypackage.meta
 *.app
 
 # Crashlytics generated file
