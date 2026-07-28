@@ -145,12 +145,19 @@ Set-ExecutionPolicy Unrestricted
 
 ## Running
 
-Open the project in Unity and open `Assets/Scenes/MainScene.unity`.
+> **You must open `Assets/Scenes/MainScene.unity` first.**
+> Unity does **not** open it automatically on a fresh clone — it starts on an empty
+> default scene. If you press Play without loading MainScene you will see an empty
+> world with no city, no traffic and no car, and none of the project's assets will
+> be loaded. This is the single most common reason people think the project "does
+> not work".
+>
+> In the Project window: `Assets` → `Scenes` → double-click **MainScene**.
 
-Press **Play**. That single action launches the co-simulation bridge, which starts
-SUMO on the fixed Luisenplatz configuration and begins streaming; the drivable scene
-comes up at the same moment. There is no need to start SUMO, the bridge and the scene
-separately.
+With MainScene open, press **Play**. That single action launches the co-simulation
+bridge, which starts SUMO on the fixed Luisenplatz configuration and begins
+streaming; the drivable scene comes up at the same moment. There is no need to start
+SUMO, the bridge and the scene separately.
 
 Drive with the keyboard; the chase camera follows the car, with a speed and gear
 indicator on screen.
