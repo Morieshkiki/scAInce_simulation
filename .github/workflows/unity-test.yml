@@ -1,0 +1,118 @@
+name: Unity Tests
+
+on:
+  push:
+    branches: [ main, 'dev-ci' ]
+  workflow_dispatch:
+
+env:
+  BYPASS_UNITY_INIT: $false  # Set to $true to bypass initialization check if needed
+
+jobs:
+  run-tests:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Clean Python tool cache
+        run: |
+          $pythonPath = Join-Path $env:RUNNER_TOOL_CACHE "Python"
+          if (Test-Path $pythonPath) {
+            Write-Host "Cleaning corrupted Python tool cache..."
+            Remove-Item -Path $pythonPath -Recurse -Force -ErrorAction SilentlyContinue
+          }
+        shell: powershell
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Set PowerShell execution policy
+        run: Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force
+        shell: powershell
+        
+      - name: Execute setup script
+        run: powershell.exe -ExecutionPolicy bypass -File .\setup.ps1
+        shell: cmd
+        
+      - name: Check Unity installation path
+        run: |
+          $UnityPath="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe"
+          if (Test-Path $UnityPath) {
+            Write-Host "Unity executable found at $UnityPath"
+          } else {
+            Write-Host "Unity executable not found, checking other locations..."
+            $unityInstallations = Get-ChildItem "C:\Program Files\Unity\Hub\Editor\" -ErrorAction SilentlyContinue | Where-Object { $_.PSIsContainer }
+            
+            if ($unityInstallations -and $unityInstallations.Count -gt 0) {
+              foreach ($dir in $unityInstallations) {
+                $testPath = Join-Path $dir.FullName "Editor\Unity.exe"
+                if (Test-Path $testPath) {
+                  Write-Host "Found Unity at: $testPath"
+                  $UnityPath = $testPath
+                  break
+                }
+              }
+            }
+            
+            if (-not (Test-Path $UnityPath)) {
+              Write-Host "No Unity installation found, the test will fail."
+            }
+          }
+          echo "UNITY_PATH=$UnityPath" >> $env:GITHUB_ENV
+        shell: powershell
+        
+      - name: Run CI simulation
+        run: |
+          $unityPath = $Env:UNITY_PATH
+          if (-not $unityPath) {
+            throw "UNITY_PATH environment variable is not set"
+          }
+          Write-Host "[INFO] Using Unity executable at $unityPath"
+
+          $positionLogDir = Join-Path (Get-Location) "Logs\PositionAccuracy"
+          if (-not (Test-Path $positionLogDir)) {
+            Write-Host "[INFO] Creating position accuracy directory at $positionLogDir"
+            New-Item -Path $positionLogDir -ItemType Directory -Force | Out-Null
+          }
+
+          $logFile = "unity_test_run.log"
+          if (Test-Path $logFile) {
+            Write-Host "[INFO] Removing previous Unity log file $logFile"
+            Remove-Item -Path $logFile -Force -ErrorAction SilentlyContinue
+          }
+
+          $logFilePath = Join-Path (Get-Location) $logFile
+          Write-Host "[INFO] Invoking run_scene_automated.ps1"
+          $params = @{
+            UnityPath = $unityPath
+            LogFile = $logFile
+            LogFilePath = $logFilePath
+            ErrorThreshold = 1.5
+          }
+          if ($Env:BYPASS_UNITY_INIT -eq '$true') {
+            Write-Host "[INFO] Bypass Unity initialization requested"
+            $params["BypassInitCheck"] = $true
+          }
+
+          & powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\run_scene_automated.ps1 @params
+          $exitCode = $LASTEXITCODE
+          if ($exitCode -ne 0) {
+            throw "run_scene_automated.ps1 failed with exit code $exitCode"
+          }
+        shell: powershell
+        
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            Logs\ci-simulation.log
+            Logs\PositionAccuracy\statistics_summary_*.txt
+            Logs\PositionAccuracy\position_accuracy_*.csv
+          retention-days: 7 

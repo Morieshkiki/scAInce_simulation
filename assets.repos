@@ -1,0 +1,33 @@
+repositories:
+  Assets/Sumonity:
+    type: git
+    url: https://github.com/TUM-VT/Sumonity.git
+    version: dev-version-2
+  Assets/Sumonity-BicycleModel:
+    type: git
+    url: https://github.com/TUM-VT/Sumonity-BicycleModel.git
+    version: main
+  Assets/Sumonity-PassengerCars:
+    type: git
+    url: https://github.com/TUM-VT/Sumonity-PassengerCars.git
+    version: main
+  Assets/BusModel:
+    type: git
+    url: https://github.com/TUM-VT/Sumonity-UnityModelTemplate.git
+    version: bus
+  Assets/TaxiModel:
+    type: git
+    url: https://github.com/TUM-VT/Sumonity-UnityModelTemplate.git
+    version: taxi
+  Assets/Sumonity/SumoTraCI/sumoProject:
+    type: git
+    url: https://github.com/TUM-VT/Sumonity-SumoProject.git
+    version: main
+  Assets/parkedvehiclespawner:
+    type: git
+    url: https://github.com/TUM-VT/Sumonity-ParkedVehicleSpawner.git
+    version: main
+  Assets/PedestrianModel:
+    type: git
+    url: https://github.com/TUM-VT/Sumonity-PedestrianModel.git
+    version: main
