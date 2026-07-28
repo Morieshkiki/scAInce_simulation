@@ -148,8 +148,7 @@ Set-ExecutionPolicy Unrestricted
 > Unity does **not** open it automatically on a fresh clone; it starts on an empty
 > default scene. If you press Play without loading MainScene you will see an empty
 > world with no city, no traffic and no car, and none of the project's assets will
-> be loaded. This is the single most common reason people think the project "does
-> not work".
+> be loaded.
 >
 > In the Project window: `Assets` → `Scenes` → double-click **MainScene**.
 
