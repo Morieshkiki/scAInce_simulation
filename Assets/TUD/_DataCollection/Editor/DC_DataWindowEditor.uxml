@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="DC_ListItem" src="project://database/Assets/_TUD/_DataCollection/Editor/DC_ListItem.uxml?fileID=9197481963319205126&amp;guid=35e464486ff629a4db4ced7ee6a59e4c&amp;type=3#DC_ListItem" />
+    <ui:VisualElement name="Header" style="position: relative; left: 0; top: 0; right: 0; align-items: flex-start; height: 40px; justify-content: space-around; padding-left: 5px; padding-right: 5px; background-color: rgba(0, 0, 0, 0.42);">
+        <ui:Label text="Title" display-tooltip-when-elided="true" name="Title" class="Title_1" style="font-size: 15px; -unity-font-style: bold;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-shrink: 0; height: 40px; background-color: rgba(0, 0, 0, 0.13); flex-direction: row; justify-content: space-between;">
+        <ui:VisualElement name="Left" style="flex-grow: 1; flex-shrink: 0; flex-direction: row;">
+            <ui:VisualElement name="vertical" style="justify-content: space-between;">
+                <ui:Label text="Select All" display-tooltip-when-elided="true" />
+                <ui:Toggle />
+            </ui:VisualElement>
+            <ui:VisualElement name="space" style="width: 10px; height: 100%;" />
+            <ui:VisualElement name="vertical" style="justify-content: space-between;">
+                <ui:Label text="Collector" display-tooltip-when-elided="true" name="Collector" />
+            </ui:VisualElement>
+            <ui:VisualElement name="space" style="width: 10px; height: 100%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:ListView focusable="true" style="left: 0; right: 0; flex-grow: 1; flex-shrink: 0; padding-left: 5px; padding-right: 5px;" />
+    <ui:Instance template="DC_ListItem" name="DC_ListItem" />
+</ui:UXML>
