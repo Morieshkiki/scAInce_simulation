@@ -164,11 +164,12 @@ The SUMO scenario is wired as `socketServer.py` → `opensource.sumocfg` →
 `net_files/osm.base.net.xml` + `demand_files/darmstadt_manual.rou.xml`, with a
 warm-up state in `warm_up/warm_up_state.xml`.
 
-> **Note on `Assets/3d_model`.** The `tum_main_*` tiles from the tum2twin dataset
-> (~1.4 GB) are *not* committed. They are referenced only by `TUM_Campus_Container`,
-> which is disabled in `MainScene` and left over from the upstream base project; the
-> Luisenplatz environment uses `BakedBuildings` and Cesium instead. Run
-> `download_unity_fbx.ps1` if you ever want to re-enable that container.
+> **Note on `Assets/3d_model`.** The folder holds the road decor meshes, curb and
+> sidewalk materials and tree prefabs that the scene actually uses. The `tum_main_*`
+> tiles from the tum2twin dataset (~1.4 GB) are *not* part of this project — they
+> belonged to `TUM_Campus_Container`, a disabled leftover from the upstream base
+> project, which has been removed from `MainScene`. The Luisenplatz environment gets
+> its buildings from `BakedBuildings` and the Cesium LoD2 model.
 
 ## Continuous integration
 
