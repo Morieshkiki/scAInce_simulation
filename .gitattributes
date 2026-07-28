@@ -1,7 +1,7 @@
 # Normalize line endings for text files
 * text=auto
 
-# Unity YAML assets — keep as text so they stay diffable/mergeable
+# Unity YAML assets: keep as text so they stay diffable/mergeable
 *.unity      text merge=unityyamlmerge eol=lf
 *.prefab     text merge=unityyamlmerge eol=lf
 *.asset      text merge=unityyamlmerge eol=lf

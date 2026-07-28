@@ -1,6 +1,6 @@
-# scAInce — A Drivable Virtual Replica of Darmstadt Traffic
+# scAInce: A Drivable Virtual Replica of Darmstadt Traffic
 
-Real-time SUMO–Unity co-simulation of **Luisenplatz, Darmstadt**.
+Real-time SUMO-Unity co-simulation of **Luisenplatz, Darmstadt**.
 
 Microscopic traffic simulation is normally observed from the outside, as a 2D plan
 view interpreted from above. This project turns such a simulation into an
@@ -8,7 +8,7 @@ environment that can be entered: a Unity-based, real-time co-simulation in which
 user drives a car through live, microscopically simulated traffic on a real
 Darmstadt street space.
 
-Morteza Eshkiknezhad — Matrikelnr. 2262833 — Future of Mobility, Sommersemester 2026
+Morteza Eshkiknezhad, Matrikelnr. 2262833. Future of Mobility, Sommersemester 2026
 
 ## Study area
 
@@ -19,7 +19,7 @@ streets such as Rheinstrasse. It also contains the Citytunnel, which carries car
 traffic underneath the square while trams and buses stay on the surface.
 
 A small area therefore already contains dedicated tram bodies, bus movements,
-ordinary car flows and a grade-separated underpass — a demanding and representative
+ordinary car flows and a grade-separated underpass, a demanding and representative
 test case without requiring a large network.
 
 ## Architecture
@@ -38,7 +38,7 @@ A three-stage pipeline on a single machine:
   TCP server on port `25001`, starts SUMO through TraCI, then on each iteration
   advances the simulation by one time step of `--dt` (0.1 s by default, matching the
   `step-length` in `opensource.sumocfg`), reads the position, heading, speed and
-  class of every vehicle, and publishes that state — so **10 new vehicle states per
+  class of every vehicle, and publishes that state, so **10 new vehicle states per
   second**. A separate socket thread transmits the latest state to Unity.
 - **Unity** is the client. It connects to the socket, spawns one object per vehicle
   chosen by the class SUMO reports, and interpolates between the received poses so
@@ -60,7 +60,7 @@ the simulated one:
   beside it.
 - **Buildings** come from the official Hessian **LoD2** city model, brought in
   through Cesium for Unity and placed in the correct geographic frame. They are left
-  untextured on purpose — the priority at this stage is correct geometry and
+  untextured on purpose: the priority at this stage is correct geometry and
   footprints, not photorealistic facades.
 
 Alignment is the key correctness condition: SUMO works in a local projected
@@ -71,7 +71,7 @@ correction is needed.
 
 A keyboard-driven car with a spring-based suspension, five gears and steering that
 tightens as speed increases, followed by a third-person chase camera. The driven car
-is **not** part of the SUMO simulation — it is controlled by Unity physics, while all
+is **not** part of the SUMO simulation; it is controlled by Unity physics, while all
 surrounding vehicles remain under SUMO's control. Collisions with simulated vehicles
 are detected and dent the affected body, so an impact is visible rather than abstract.
 
@@ -80,7 +80,7 @@ are detected and dent the affected body, so an impact is visible rather than abs
 Demand is expressed as static flows: passenger cars on the through streets, trams and
 buses along their real corridors. Speeds are capped to the ~30 km/h regime typical of
 these inner-city streets, with trams slightly lower. The pattern is deliberately
-**hypothetical rather than calibrated** against measured counts — its purpose is to
+**hypothetical rather than calibrated** against measured counts. Its purpose is to
 keep the square continuously populated with a plausible mix so that a driver always
 encounters traffic. Because the demand lives in static files inside the project, the
 same traffic unfolds on every launch.
@@ -104,7 +104,7 @@ your environment. Set both of these, as the SUMO documentation recommends:
 | `PYTHONPATH` | `%SUMO_HOME%\tools` |
 
 With `PYTHONPATH` set, `import traci` resolves to the copy bundled with your SUMO
-installation, so the TraCI version always matches the simulator — which is what
+installation, so the TraCI version always matches the simulator, which is what
 the bridge needs. Without it, Python falls back to the `traci==1.18.0` pinned in
 `requirements.txt`, which may not match your SUMO and is the first thing to check
 if the bridge fails to connect.
@@ -113,7 +113,7 @@ if the bridge fails to connect.
 
 This repository is **self-contained**: the co-simulation bridge, the SUMO network
 and demand, and all vehicle models are committed with the project. A clone has
-everything needed to run — there is no `vcs import` step.
+everything needed to run; there is no `vcs import` step.
 
 The repository uses **Git LFS** for its meshes and textures, so install that first:
 
@@ -150,7 +150,7 @@ Set-ExecutionPolicy Unrestricted
 ## Running
 
 > **You must open `Assets/Scenes/MainScene.unity` first.**
-> Unity does **not** open it automatically on a fresh clone — it starts on an empty
+> Unity does **not** open it automatically on a fresh clone; it starts on an empty
 > default scene. If you press Play without loading MainScene you will see an empty
 > world with no city, no traffic and no car, and none of the project's assets will
 > be loaded. This is the single most common reason people think the project "does
@@ -170,7 +170,7 @@ indicator on screen.
 
 | Path | Contents |
 |------|----------|
-| `Assets/Scenes/MainScene.unity` | The Luisenplatz scene — entry point |
+| `Assets/Scenes/MainScene.unity` | The Luisenplatz scene, entry point |
 | `Assets/Scripts/PlayerCarController.cs` | Drivable car: suspension, gears, steering |
 | `Assets/Scripts/ThirdPersonFollowCamera.cs` | Chase camera |
 | `Assets/Scripts/Crash/` | Collision handling and mesh deformation |
@@ -178,7 +178,7 @@ indicator on screen.
 | `Assets/Scripts/CITesting/AutomatedTesting.cs` | Headless CI run driver |
 | `Assets/Editor/RoadBeautifier.cs` | Road geometry post-processing |
 | `Assets/building_materials/` | Cesium georeference for the LoD2 city model |
-| `Assets/Sumonity/SumoTraCI/socketServer.py` | The bridge — TraCI loop, TCP server on `25001` |
+| `Assets/Sumonity/SumoTraCI/socketServer.py` | The bridge: TraCI loop, TCP server on `25001` |
 | `Assets/Sumonity/SumoTraCI/sumoProject/opensource.sumocfg` | Active SUMO config |
 | `Assets/Sumonity/SumoTraCI/sumoProject/net_files/` | Corrected network (`osm.base.net.xml`) |
 | `Assets/Sumonity/SumoTraCI/sumoProject/demand_files/` | Static demand (`darmstadt_manual.rou.xml`) |
@@ -193,7 +193,7 @@ warm-up state in `warm_up/warm_up_state.xml`.
 
 > **Note on `Assets/3d_model`.** The folder holds the road decor meshes, curb and
 > sidewalk materials and tree prefabs that the scene actually uses. The `tum_main_*`
-> tiles from the tum2twin dataset (~1.4 GB) are *not* part of this project — they
+> tiles from the tum2twin dataset (~1.4 GB) are *not* part of this project; they
 > belonged to `TUM_Campus_Container`, a disabled leftover from the upstream base
 > project, which has been removed from `MainScene`. The Luisenplatz environment gets
 > its buildings from `BakedBuildings` and the Cesium LoD2 model.
@@ -210,7 +210,7 @@ Position-accuracy statistics and logs are uploaded as build artifacts.
 The scope was kept deliberately narrow so the result could be finished and verified:
 
 - One district, one representative demand pattern.
-- Motorised modes only — passenger cars, buses and trams. Pedestrians, cyclists and
+- Motorised modes only: passenger cars, buses and trams. Pedestrians, cyclists and
   public-transport stops are out of scope.
 - The demand is hypothetical, not calibrated against measured counts.
 
@@ -234,9 +234,9 @@ from TUM-VT. Two leftovers from that base project remain:
 
 ## References
 
-- Lopez et al. (2018) — *Microscopic Traffic Simulation using SUMO*
-- Pechinger & Lindner (2024) — *Sumonity*
-- Mohammadi et al. (2024) — *SUMO2Unity*
-- Nagy et al. (2025) — *SUMITY*
+- Lopez et al. (2018), *Microscopic Traffic Simulation using SUMO*
+- Pechinger & Lindner (2024), *Sumonity*
+- Mohammadi et al. (2024), *SUMO2Unity*
+- Nagy et al. (2025), *SUMITY*
 
 See [`AI_DECLARATION.md`](AI_DECLARATION.md) for the AI assistance declaration.
