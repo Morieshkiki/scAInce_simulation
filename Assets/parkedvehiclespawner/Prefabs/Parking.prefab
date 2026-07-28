@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2975901075023403980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8324180570129081178}
+  - component: {fileID: 5040454416904461983}
+  m_Layer: 0
+  m_Name: Parking
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8324180570129081178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975901075023403980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6633327732859986909}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5040454416904461983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975901075023403980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808db0a95897feb4aa4c89b947d4b43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parkingSpacePrefabs:
+  - {fileID: -927199367670048503, guid: bf60a04756bd4bf4ca11cc3bbdaa6f1e, type: 3}
+  - {fileID: 919132149155446097, guid: b7b7a0ab1a7cb214ab090dc40840536c, type: 3}
+  - {fileID: 919132149155446097, guid: 6880d80512559e64482b0e7dfea9f304, type: 3}
+  - {fileID: 919132149155446097, guid: 62d779538e50a9d4a815565f166aa89f, type: 3}
+  - {fileID: 919132149155446097, guid: 02ff8a54cf6dbee45ab97bfe7bc8e39d, type: 3}
+  - {fileID: 919132149155446097, guid: 8b657c64a6d1ab64e8c5a206f6e1d40d, type: 3}
+  - {fileID: 100024, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
+  - {fileID: 100018, guid: edce78e67363fd64893d3acec46ecc88, type: 3}
+  occupancyRate: 50
+  offsetX: 342.25
+  offsetZ: 273.25
+--- !u!1 &5075667976988911909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6633327732859986909}
+  m_Layer: 0
+  m_Name: ParkingVehicles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6633327732859986909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075667976988911909}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8324180570129081178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

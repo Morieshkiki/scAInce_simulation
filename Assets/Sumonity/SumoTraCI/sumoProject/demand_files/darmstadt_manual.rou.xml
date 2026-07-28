@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This section, was adjusted using AI assistance:
+     static hypothetical Darmstadt demand (trams, buses, passenger cars) with
+     Luisenplatz-realistic speed caps, adapted from the former LLM manual_demand. -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vType id="tram" vClass="tram" maxSpeed="6.94" speedFactor="1.0"/>
+    <vType id="bus" vClass="bus" maxSpeed="8.33" speedFactor="1.0"/>
+    <vType id="car" vClass="passenger" maxSpeed="8.33" speedFactor="1.0"/>
+
+<flow id="m_0" begin="0.00" end="3600.00" from="1425063845#0" to="-1201551411#1" via="254075887" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_1" begin="0.00" end="3600.00" from="1201551411#0" to="61102531#1" via="254075887" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_2" begin="0.00" end="3600.00" from="1201551411#0" to="-1201551411#1" via="254075887" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_3" begin="0.00" end="3600.00" from="61102531#0" to="-1201551411#1" via="254075887" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_4" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_5" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_6" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_7" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_8" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_9" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_10" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_11" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_12" begin="0.00" end="3600.00" from="1375713200" to="494282100#0" via="249682388#0" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_13" begin="0.00" end="3600.00" from="140097189#0" to="494282100#0" via="249682388#0" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_14" begin="0.00" end="3600.00" from="140097187#0" to="494282100#0" via="249682388#0" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_15" begin="0.00" end="3600.00" from="140097189#0" to="1375713200" via="249682388#0" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_16" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_17" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_18" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_19" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_20" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_21" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_22" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_23" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_24" begin="0.00" end="3600.00" from="1375713200" to="494282100#0" via="249682388#0" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_25" begin="0.00" end="3600.00" from="140097189#0" to="494282100#0" via="249682388#0" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_26" begin="0.00" end="3600.00" from="140097187#0" to="494282100#0" via="249682388#0" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_27" begin="0.00" end="3600.00" from="140097189#0" to="1375713200" via="249682388#0" departLane="best" vehsPerHour="25.00"  type="car" />
+    <flow id="m_28" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_29" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_30" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_31" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="2.50" type="bus" />
+    <flow id="m_32" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_33" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_34" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_35" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="2.50" type="tram" />
+    <flow id="m_36" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="30.00" type="tram" />
+    <flow id="m_37" begin="0.00" end="600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_38" begin="0.00" end="600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_39" begin="0.00" end="600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_40" begin="0.00" end="600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_41" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_42" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_43" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_44" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_45" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_46" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_47" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_48" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_49" begin="0.00" end="3600.00" from="-E4" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_50" begin="0.00" end="3600.00" from="-E4" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_51" begin="0.00" end="3600.00" from="-E3" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_52" begin="0.00" end="3600.00" from="-E3" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_53" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_54" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_55" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_56" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_57" begin="0.00" end="3600.00" from="-E4" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="30.00" type="tram" />
+    <flow id="m_58" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="40.00" type="bus" />
+    <flow id="m_59" begin="0.00" end="3600.00" from="-E4" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="30.00" type="tram" />
+    <flow id="m_60" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="40.00" type="bus" />
+    <flow id="m_61" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_62" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_63" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_64" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_65" begin="0.00" end="3600.00" from="-E4" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_66" begin="0.00" end="3600.00" from="-E4" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_67" begin="0.00" end="3600.00" from="-E3" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_68" begin="0.00" end="3600.00" from="-E3" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_69" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_70" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_71" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_72" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_73" begin="0.00" end="3600.00" from="-E4" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_74" begin="0.00" end="3600.00" from="-E4" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_75" begin="0.00" end="3600.00" from="-E3" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_76" begin="0.00" end="3600.00" from="-E3" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_77" begin="0.00" end="3600.00" from="-E4" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_78" begin="0.00" end="3600.00" from="-E4" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_79" begin="0.00" end="3600.00" from="-E3" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_80" begin="0.00" end="3600.00" from="-E3" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_81" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_82" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_83" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_84" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_85" begin="0.00" end="3600.00" from="-E4" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_86" begin="0.00" end="3600.00" from="-E4" to="E3" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_87" begin="0.00" end="3600.00" from="-E3" to="E4" via="1201551425#0" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_88" begin="0.00" end="3600.00" from="-E4" to="-1420452456.81" via="-1201551429#1" departLane="best" vehsPerHour="10.00" type="bus" />
+    <flow id="m_89" begin="0.00" end="3600.00" from="-E4" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_90" begin="0.00" end="3600.00" from="-E4" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_91" begin="0.00" end="3600.00" from="-E3" to="E4" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+    <flow id="m_92" begin="0.00" end="3600.00" from="-E3" to="E3" via="-1201551426#3" departLane="best" vehsPerHour="7.50" type="tram" />
+</routes>

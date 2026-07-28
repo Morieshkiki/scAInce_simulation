@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vType id="tram" vClass="tram" />
+    <vType id="bus" vClass="bus" />
+    <flow id="m_0" begin="0.00" end="3600.00" from="984750328" to="229614466" via="150016535#0" departLane="best" vehsPerHour="75.00" />
+    <flow id="m_1" begin="0.00" end="3600.00" from="984750328" to="182880764#1" via="150016535#0" departLane="best" vehsPerHour="75.00" />
+    <flow id="m_2" begin="0.00" end="3600.00" from="984750328" to="182880764#0" via="150016535#0" departLane="best" vehsPerHour="75.00" />
+    <flow id="m_3" begin="0.00" end="3600.00" from="984750328" to="62381786#0" via="150016535#0" departLane="best" vehsPerHour="75.00" />
+    <flow id="m_4" begin="0.00" end="3600.00" from="1425063845#0" to="253669277" departLane="best" vehsPerHour="50.00" />
+    <flow id="m_5" begin="0.00" end="3600.00" from="1425063845#0" to="61100006#0" departLane="best" vehsPerHour="50.00" />
+    <flow id="m_6" begin="0.00" end="3600.00" from="127177148#0" to="253669278#0" departLane="best" vehsPerHour="50.00" />
+    <flow id="m_7" begin="0.00" end="3600.00" from="61102531#0" to="253669277" departLane="best" vehsPerHour="50.00" />
+</routes>

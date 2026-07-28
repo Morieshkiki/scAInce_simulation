@@ -1,0 +1,9 @@
+# This copy of Sumonity is vendored into the scAInce project rather than pulled
+# with vcs import, because the bridge and the SUMO scenario were adapted for
+# Luisenplatz. The network, demand and config files under SumoTraCI/sumoProject
+# are therefore committed with the project - see the repository readme.
+#
+# Only machine-local artefacts stay out:
+venv/
+__pycache__
+__pycache__.meta

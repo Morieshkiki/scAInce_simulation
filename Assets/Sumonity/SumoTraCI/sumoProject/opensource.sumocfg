@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This section, was adjusted using AI assistance -->
+<!-- Static Darmstadt setup (LLM removed). Uses the osm.base network brought in
+     from the former SUMO_LLM_Agent folder, with a fixed hypothetical demand
+     (trams, buses, passenger cars) and Luisenplatz-realistic speed caps.
+     No random demand, no agent. Originals backed up as *.bak. -->
+
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="net_files/osm.base.net.xml"/>
+        <route-files value="demand_files/darmstadt_manual.rou.xml"/>
+    </input>
+
+    <time>
+        <end value="3600"/>
+        <step-length value="0.1"/>
+    </time>
+
+    <processing>
+        <ignore-route-errors value="true"/>
+    </processing>
+
+</sumoConfiguration>

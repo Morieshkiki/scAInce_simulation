@@ -82,24 +82,23 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 
-# Exclude other repos from repo list
+# The co-simulation bridge, the SUMO network/demand and the vehicle models are
+# committed directly into this repository so that a clone is self-contained and
+# runs without a separate vcs import step. Only the pieces below stay out.
 
-# Assets/3d_model/
-3d_model.meta
-*.fbx
-*.fbx.meta
-Assets/Sumonity/
-Assets/BicycleModel/
-Assets/CarModel/
-Assets/BusModel/
-Assets/TaxiModel/
+# TUM main campus tiles from the tum2twin dataset (~1.4 GB). Referenced only by
+# the disabled TUM_Campus_Container in MainScene; the Luisenplatz environment
+# uses BakedBuildings and the Cesium LoD2 model instead. Restore with
+# download_unity_fbx.ps1 if the container is ever re-enabled.
+Assets/3d_model/tum_main_*
+
+# Python virtual environment for the TraCI bridge - recreate it locally,
+# see the readme
+Assets/Sumonity/SumoTraCI/venv/
+__pycache__/
+
 Assets/#Data/*
-!Assets/#Data/.gitkeep 
-Assets/parkedvehiclespawner/
-Assets/PedestrianModel/
-Assets/Sumonity-PassengerCars/
-Assets/Sumonity-BicycleModel/
-Assets/3d_model/
+!Assets/#Data/.gitkeep
 
 speedsLogs.txt
 .vsconfig

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-11-19 16:44:16 by Eclipse SUMO netedit Version 1.17.0
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- VTypes -->
+    <vType id="type1" length="5.00" minGap="3.00" maxSpeed="70.00" vClass="bicycle" width="1.80" latAlignment="arbitrary" accel="10" decel="10" sigma="0.5"/>
+    <!-- Routes -->
+    <route id="r_8_traffic" edges="215 66 37 297 207 271 -43 55 26 274 -46 -210 -162"/>
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <vehicle id="bike1" type="type1" depart="0.00" departPos="0.00" insertionChecks="none">
+        <route edges="-38"/>
+    </vehicle>
+    <flow id="f_0" begin="0.00" route="r_8_traffic" end="3600.00" probability="0.08"/>
+</routes>
