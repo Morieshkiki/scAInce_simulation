@@ -44,6 +44,14 @@ if (-not ($pythonVersion -like "*3.11*")) {
     Exit 1
 }
 
+# The co-simulation bridge, the SUMO scenario and the vehicle models are
+# committed with this repository, so a fresh clone already has them and no
+# import is needed. The block below only runs for older working copies that
+# predate that change, where these folders were pulled with vcstool.
+if (Test-Path "Assets/Sumonity/SumoTraCI/socketServer.py") {
+    Write-Host "Project assets already present - skipping the vcstool import."
+} else {
+
 # Install vcstool2
 Write-Host "Installing vcstool2..."
 pip install vcstool2
@@ -97,6 +105,8 @@ if ($vcsCommand) {
         Write-Host "Error parsing or using assets.repos file: $_"
     }
 }
+
+}  # end of the legacy vcstool import branch
 
 # Create Assets/3d_model directory if it doesn't exist
 if (-not (Test-Path "Assets/3d_model")) {

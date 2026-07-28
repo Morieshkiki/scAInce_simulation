@@ -91,28 +91,27 @@ same traffic unfolds on every launch.
 
 ## Installation
 
-Clone the repository, then run the setup script in PowerShell as Administrator:
+This repository is **self-contained**: the co-simulation bridge, the SUMO network
+and demand, and all vehicle models are committed with the project. A clone has
+everything needed to run — there is no `vcs import` step.
+
+The repository uses **Git LFS** for its meshes and textures, so install that first:
+
+```bash
+git lfs install
+git clone https://github.com/Morieshkiki/scAInce_simulation.git
+```
+
+Then run the setup script in PowerShell as Administrator:
 
 ```powershell
 .\setup.ps1
 ```
 
-### Manual setup
+### Python environment for the bridge
 
-Make sure the SSH key of the machine you are working on is added to your account.
-Use **Git Bash** for the repository setup — the vcs tools do not work otherwise.
-
-Install the vcs tooling and pull the vehicle-model and Sumonity submodules:
-
-```bash
-pip install vcstool2
-vcs import < assets.repos
-```
-
-Check for warnings regarding the `PATH` variable. On Windows 11, install `vcstool2`
-inside a Python venv.
-
-Then set up the SUMO/TraCI Python environment:
+The only thing not committed is the Python virtual environment for TraCI, which
+has to be created locally:
 
 ```bash
 cd Assets/Sumonity/SumoTraCI
@@ -152,7 +151,24 @@ indicator on screen.
 | `Assets/Scripts/CITesting/AutomatedTesting.cs` | Headless CI run driver |
 | `Assets/Editor/RoadBeautifier.cs` | Road geometry post-processing |
 | `Assets/building_materials/` | Cesium georeference for the LoD2 city model |
-| `assets.repos` | vcstool manifest for the Sumonity submodules |
+| `Assets/Sumonity/SumoTraCI/socketServer.py` | The bridge — TraCI loop, TCP server on `25001` |
+| `Assets/Sumonity/SumoTraCI/sumoProject/opensource.sumocfg` | Active SUMO config |
+| `Assets/Sumonity/SumoTraCI/sumoProject/net_files/` | Corrected network (`osm.base.net.xml`) |
+| `Assets/Sumonity/SumoTraCI/sumoProject/demand_files/` | Static demand (`darmstadt_manual.rou.xml`) |
+| `Assets/Sumonity-PassengerCars/`, `BusModel/`, `TaxiModel/` | Models spawned per SUMO vehicle class |
+| `Assets/Vladislav Simakov/` | Tram and bus meshes |
+| `Assets/3d_model/` | Road decor meshes, curb/sidewalk materials, tree prefabs |
+| `assets.repos` | Provenance record of the upstream repos these folders came from |
+
+The SUMO scenario is wired as `socketServer.py` → `opensource.sumocfg` →
+`net_files/osm.base.net.xml` + `demand_files/darmstadt_manual.rou.xml`, with a
+warm-up state in `warm_up/warm_up_state.xml`.
+
+> **Note on `Assets/3d_model`.** The `tum_main_*` tiles from the tum2twin dataset
+> (~1.4 GB) are *not* committed. They are referenced only by `TUM_Campus_Container`,
+> which is disabled in `MainScene` and left over from the upstream base project; the
+> Luisenplatz environment uses `BakedBuildings` and Cesium instead. Run
+> `download_unity_fbx.ps1` if you ever want to re-enable that container.
 
 ## Continuous integration
 
@@ -177,9 +193,16 @@ built to run reproducibly.
 ## Notes on inherited scripts
 
 This project is based on the [Sumonity-UnityBaseProject](https://github.com/TUM-VT/Sumonity-UnityBaseProject)
-from TUM-VT. `download_unity_fbx.ps1` fetches the TUM main campus model from the
-tum2twin dataset and is a leftover from that base project — the Luisenplatz
-environment takes its buildings from the Hessian LoD2 model via Cesium instead.
+from TUM-VT. Two leftovers from that base project remain:
+
+- `download_unity_fbx.ps1` fetches the TUM main campus model from tum2twin. The
+  Luisenplatz environment takes its buildings from the Hessian LoD2 model via
+  Cesium instead, so this is only needed for the disabled `TUM_Campus_Container`.
+- `assets.repos` and `vcs_import.sh` describe how the bridge and vehicle models
+  used to be pulled. Those folders are now committed directly, because the bridge
+  and the SUMO scenario were adapted for Luisenplatz and the upstream repositories
+  do not contain those changes. `setup.ps1` skips the import when the folders are
+  already present.
 
 ## References
 
