@@ -1,6 +1,6 @@
 # Automated script to open and run a Unity scene in batch mode
 param (
-    [string]$UnityPath = "C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe",
+    [string]$UnityPath = "C:\Program Files\Unity\Hub\Editor\6000.4.1f1\Editor\Unity.exe",
     [string]$ScenePath = "Assets/Scenes/MainScene.unity",
     [string]$LogFile = "unity_test_run.log",
     [int]$TimeToRun = 90,
@@ -9,7 +9,7 @@ param (
     [switch]$VehiclePositionComparison = $true,
     [string]$PositionAccuracyDirectory = "Logs\PositionAccuracy",
     [double]$ErrorThreshold = 1.5,  # Updated to 1.5 meters for new logging system
-    [string]$LogFilePath = "C:\Users\celsius\actions-runner\_work\Sumonity-UnityBaseProject\Sumonity-UnityBaseProject\unity_test_run.log",
+    [string]$LogFilePath = (Join-Path (Get-Location) "unity_test_run.log"),
     [switch]$BypassInitCheck = $false,
     [string[]]$TraCIProcessNames = @("python.exe", "python3.exe", "pythonw.exe"),
     [string[]]$TraCICommandMarkers = @("SumoTraCI", "socketServer.py", "traci"),
