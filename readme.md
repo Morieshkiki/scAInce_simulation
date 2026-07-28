@@ -84,10 +84,26 @@ same traffic unfolds on every launch.
 ## Prerequisites
 
 - Unity **6000.4.1f1**
-- SUMO 1.21 or later — important: the installed `traci` must be the same version
+- SUMO 1.21 or later (verified against 1.24.0)
 - Python 3.11 (later versions run into compatibility issues)
 - Windows 10/11
-- Git Bash (required for the vcs tooling)
+- Git LFS
+
+### Environment variables
+
+`socketServer.py` does a bare `import traci`, so which TraCI it loads depends on
+your environment. Set both of these, as the SUMO documentation recommends:
+
+| Variable | Value |
+|----------|-------|
+| `SUMO_HOME` | your SUMO install, e.g. `C:\Program Files (x86)\Eclipse\Sumo\` |
+| `PYTHONPATH` | `%SUMO_HOME%\tools` |
+
+With `PYTHONPATH` set, `import traci` resolves to the copy bundled with your SUMO
+installation, so the TraCI version always matches the simulator — which is what
+the bridge needs. Without it, Python falls back to the `traci==1.18.0` pinned in
+`requirements.txt`, which may not match your SUMO and is the first thing to check
+if the bridge fails to connect.
 
 ## Installation
 
