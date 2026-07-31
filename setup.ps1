@@ -44,7 +44,7 @@ if (-not ($pythonVersion -like "*3.11*")) {
     Exit 1
 }
 
-# This section, was adjusted using AI assistance
+# This section was adjusted using AI assistance
 #
 # The co-simulation bridge, the SUMO scenario and the vehicle models are
 # committed with this repository, so a fresh clone already has them and no

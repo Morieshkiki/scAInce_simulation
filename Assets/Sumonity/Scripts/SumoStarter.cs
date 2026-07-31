@@ -30,9 +30,9 @@ public class SumoStarter : MonoBehaviour
     }
 
     // --- This section was adjusted using AI assistance ---
-    // EXTERNAL_SUMO: when true, an external app (the old LLM script.py) is the SUMO
-    // host and Unity only connects to port 25001. That mode is now RETIRED — the LLM
-    // is gone. With this flag false, pressing Play makes Unity launch Sumonity's own
+    // EXTERNAL_SUMO: when true, an external TraCI controller is the SUMO host and
+    // Unity only connects to port 25001. That mode is not used by this project.
+    // With this flag false, pressing Play makes Unity launch Sumonity's own
     // socketServer.py, which starts sumo-gui on the static Darmstadt config
     // (sumoProject/opensource.sumocfg) and serves vehicle data on 25001 itself.
     const bool EXTERNAL_SUMO = false;
@@ -41,7 +41,7 @@ public class SumoStarter : MonoBehaviour
     {
         if (EXTERNAL_SUMO)
         {
-            UnityEngine.Debug.Log("[SumoStarter] EXTERNAL_SUMO mode: SUMO is hosted by the LLM app on port 25001; not launching a local SUMO bridge.");
+            UnityEngine.Debug.Log("[SumoStarter] EXTERNAL_SUMO mode: SUMO is hosted by an external TraCI controller on port 25001. Not launching a local SUMO bridge.");
             return;
         }
 
@@ -204,9 +204,9 @@ public class SumoStarter : MonoBehaviour
     void OnApplicationQuit()
     {
         // In EXTERNAL_SUMO mode Unity never launched any SUMO/bridge process, so there is
-        // nothing of ours to clean up — and the generic cleanup below kills EVERY process
-        // whose name contains "sumo", which murdered the LLM app's headless SUMO host
-        // every time Play mode was stopped (the app then reported
+        // nothing of ours to clean up. The generic cleanup below kills EVERY process whose
+        // name contains "sumo", which would also kill an external SUMO server every time
+        // Play mode was stopped (that server then reports
         // "SUMO closed unexpectedly: connection forcibly closed").
         if (EXTERNAL_SUMO) return;
 

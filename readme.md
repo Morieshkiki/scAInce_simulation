@@ -51,12 +51,12 @@ the simulated one:
 
 - **Roads** are generated from the same SUMO network, using a road-building step
   based on SUMO2Unity (Mohammadi et al., 2024). Because roads and simulation come
-  from one network, a vehicle reported by SUMO sits on the visible road rather than
-  beside it.
+  from one network, a vehicle reported by SUMO sits directly on the visible road
+  geometry.
 - **Buildings** come from the official Hessian **LoD2** city model, brought in
   through Cesium for Unity and placed in the correct geographic frame. They are left
-  untextured on purpose: the priority at this stage is correct geometry and
-  footprints, not photorealistic facades.
+  untextured on purpose: the priority at this stage is correct geometry and correct
+  footprints, so that streets, corners and sightlines are right.
 
 Alignment is the key correctness condition: SUMO works in a local projected
 coordinate system, and the scene is built in that same local frame, so no per-vehicle
@@ -66,16 +66,17 @@ correction is needed.
 
 A keyboard-driven car with a spring-based suspension, five gears and steering that
 tightens as speed increases, followed by a third-person chase camera. The driven car
-is **not** part of the SUMO simulation; it is controlled by Unity physics, while all
+is **not** part of the SUMO simulation. It is controlled by Unity physics, while all
 surrounding vehicles remain under SUMO's control. Collisions with simulated vehicles
-are detected and dent the affected body, so an impact is visible rather than abstract.
+are detected and dent the affected body, so an impact leaves a visible mark on the
+bodywork.
 
 ### Traffic demand
 
 Demand is expressed as static flows: passenger cars on the through streets, trams and
 buses along their real corridors. Speeds are capped to the ~30 km/h regime typical of
-these inner-city streets, with trams slightly lower. The pattern is deliberately
-**hypothetical rather than calibrated** against measured counts. Its purpose is to
+these inner-city streets, with trams slightly lower. The demand is deliberately
+**hypothetical** and has not been calibrated against measured counts. Its purpose is to
 keep the square continuously populated with a plausible mix so that a driver always
 encounters traffic. Because the demand lives in static files inside the project, the
 same traffic unfolds on every launch.
@@ -108,7 +109,7 @@ if the bridge fails to connect.
 
 This repository is **self-contained**: the co-simulation bridge, the SUMO network
 and demand, and all vehicle models are committed with the project. A clone has
-everything needed to run; there is no `vcs import` step.
+everything needed to run. There is no `vcs import` step.
 
 The repository uses **Git LFS** for its meshes and textures, so install that first:
 
@@ -145,7 +146,7 @@ Set-ExecutionPolicy Unrestricted
 ## Running
 
 > **You must open `Assets/Scenes/MainScene.unity` first.**
-> Unity does **not** open it automatically on a fresh clone; it starts on an empty
+> Unity does **not** open it automatically on a fresh clone. It starts on an empty
 > default scene. If you press Play without loading MainScene you will see an empty
 > world with no city, no traffic and no car, and none of the project's assets will
 > be loaded.
@@ -154,10 +155,10 @@ Set-ExecutionPolicy Unrestricted
 
 With MainScene open, press **Play**. That single action launches the co-simulation
 bridge, which starts SUMO on the fixed Luisenplatz configuration and begins
-streaming; the drivable scene comes up at the same moment. There is no need to start
+streaming. The drivable scene comes up at the same moment. There is no need to start
 SUMO, the bridge and the scene separately.
 
-Drive with the keyboard; the chase camera follows the car, with a speed and gear
+Drive with the keyboard. The chase camera follows the car, with a speed and gear
 indicator on screen.
 
 ## Repository layout
@@ -187,7 +188,7 @@ warm-up state in `warm_up/warm_up_state.xml`.
 
 > **Note on `Assets/3d_model`.** The folder holds the road decor meshes, curb and
 > sidewalk materials and tree prefabs that the scene actually uses. The `tum_main_*`
-> tiles from the tum2twin dataset (~1.4 GB) are *not* part of this project; they
+> tiles from the tum2twin dataset (~1.4 GB) are *not* part of this project. They
 > belonged to `TUM_Campus_Container`, a disabled leftover from the upstream base
 > project, which has been removed from `MainScene`. The Luisenplatz environment gets
 > its buildings from `BakedBuildings` and the Cesium LoD2 model.
@@ -208,9 +209,9 @@ The scope was kept deliberately narrow so the result could be finished and verif
   public-transport stops are out of scope.
 - The demand is hypothetical, not calibrated against measured counts.
 
-This work is an **integration of adapted open components rather than a new
-algorithm**: a working, launch-and-drive virtual replica of one Darmstadt district,
-built to run reproducibly.
+This work integrates and adapts open-source components into a working,
+launch-and-drive virtual replica of one Darmstadt district, built to run
+reproducibly.
 
 ## Notes on inherited scripts
 

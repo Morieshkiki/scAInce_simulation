@@ -32,82 +32,6 @@ globalPreviousPathDict = {}
 # Lane shape cache for performance
 lane_shape_cache = {}
 
-# ===================== LLM remote control (Luisenplatz) =====================
-# The LLM agent (SUMO_LLM_Agent/script.py) writes a small JSON file at the
-# Unity PROJECT ROOT (the bridge's working directory, set by SumoStarter.cs):
-#     {"seq": <int>, "cmd": "reload" | "pause" | "resume"}
-# We poll it once per simulation-loop iteration (cheap mtime check).
-# Rules:
-#   - A command only executes if its seq is GREATER than the last seen seq.
-#   - The FIRST time we ever see the file (fresh bridge start) we adopt its
-#     seq WITHOUT executing: SUMO has just loaded the freshest files anyway,
-#     and this prevents replaying a stale command from a previous session.
-#   - "reload"  -> traci.load() the same sumocfg: re-reads net + demand files
-#                  and resets the simulation to t=0 ("start fresh").
-#   - "pause"   -> stop calling simulationStep(); vehicles freeze in Unity.
-#   - "resume"  -> continue stepping.
-# An ack file (seq, cmd, ok, error) is written after each handled command so
-# the LLM side can verify the bridge picked it up.
-LLM_CONTROL_FILE = "llm_control.json"
-LLM_CONTROL_ACK_FILE = "llm_control_ack.json"
-SUMO_CFG_RELPATH = "Assets/Sumonity/SumoTraCI/sumoProject/opensource.sumocfg"
-
-llm_paused = False
-llm_last_seq = None      # None = "never saw the control file yet"
-llm_control_mtime = None
-
-
-def _write_llm_ack(seq, cmd, ok=True, error=""):
-    try:
-        with open(LLM_CONTROL_ACK_FILE, "w", encoding="utf-8") as f:
-            json.dump({"seq": seq, "cmd": cmd, "ok": ok, "error": error}, f)
-    except Exception:
-        pass  # ack is best-effort; never break the sim loop over it
-
-
-def check_llm_control():
-    """Poll the control file. Applies pause/resume directly (via llm_paused),
-    returns 'reload' when a reload is requested, else None."""
-    global llm_paused, llm_last_seq, llm_control_mtime
-    try:
-        mtime = os.path.getmtime(LLM_CONTROL_FILE)
-    except OSError:
-        return None                       # control file doesn't exist yet
-    if mtime == llm_control_mtime:
-        return None                       # unchanged since last poll
-    llm_control_mtime = mtime
-    try:
-        with open(LLM_CONTROL_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        seq = int(data.get("seq", -1))
-        cmd = str(data.get("cmd", "")).strip().lower()
-    except Exception as e:
-        print(f"[llm-control] unreadable control file: {e}")
-        return None
-    if llm_last_seq is None:
-        # First sight after bridge start: adopt seq, do NOT execute (the
-        # command predates this session; files were already loaded fresh).
-        llm_last_seq = seq
-        print(f"[llm-control] adopted pre-existing control file (seq={seq}), not executing")
-        return None
-    if seq <= llm_last_seq:
-        return None                       # already processed
-    llm_last_seq = seq
-    print(f"[llm-control] received cmd='{cmd}' (seq={seq})")
-    if cmd == "pause":
-        llm_paused = True
-        _write_llm_ack(seq, cmd)
-    elif cmd == "resume":
-        llm_paused = False
-        _write_llm_ack(seq, cmd)
-    elif cmd == "reload":
-        return "reload"                   # handled (and acked) in the sim loop
-    else:
-        print(f"[llm-control] unknown cmd '{cmd}' ignored")
-        _write_llm_ack(seq, cmd, ok=False, error="unknown command")
-    return None
-
-
 def build_junction_id_set():
     """(Re)build the numeric junction-id set used by the lookahead logic.
     Must be called after traci.start AND after every traci.load, because a
@@ -118,7 +42,6 @@ def build_junction_id_set():
         if num is not None:
             s.add(num)
     return s
-# ============================================================================
 
 def get_cached_lane_shape(lane_id):
     """Get lane shape with caching to avoid repeated TraCI calls."""
@@ -247,32 +170,11 @@ def TraciServer(server,dt):
 
     traci.setOrder(0)
 
-    global llm_paused
     step = 0
     while True:
         start_time = time.time()
 
-        # ---- LLM remote control (poll once per iteration) ----
-        cmd = check_llm_control()
-        if cmd == "reload":
-            try:
-                traci.load(["-c", SUMO_CFG_RELPATH, "--num-clients", "1", "-S"])
-                # The reloaded network may differ from the previous one: every
-                # cache keyed on lane/junction ids is now stale and MUST be
-                # cleared, otherwise the lookahead logic reads shapes from the
-                # old network (wrong vehicle orientation) or crashes.
-                lane_shape_cache.clear()
-                globalPreviousPathDict.clear()
-                junctionIDSet = build_junction_id_set()
-                llm_paused = False   # a reload implies "start fresh"
-                _write_llm_ack(llm_last_seq, "reload", ok=True)
-                print("[llm-control] reload complete: files re-read, sim reset to t=0")
-            except Exception as e:
-                _write_llm_ack(llm_last_seq, "reload", ok=False, error=str(e))
-                print(f"[llm-control] reload FAILED: {e} (continuing previous simulation)")
-
-        if not llm_paused:
-            traci.simulationStep() # Trgger one timestep in the sumo simulation
+        traci.simulationStep() # Trigger one timestep in the sumo simulation
         step += 1
         time.sleep(dt)
 

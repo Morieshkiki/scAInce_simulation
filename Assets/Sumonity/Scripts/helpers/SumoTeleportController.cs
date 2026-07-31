@@ -36,7 +36,7 @@ namespace tumvt.sumounity
 
         private SumoSocketClient sock;
 
-        // This section, was adjusted using AI assistance
+        // This section was adjusted using AI assistance
         [Tooltip("Interpolation window in seconds. Leave at 0 to adapt automatically to the observed SUMO update rate (recommended). Set e.g. 0.1 to pin it to the bridge's --dt.")]
         public float fixedInterpolationWindow = 0f;
         [Tooltip("Widens the interpolation window slightly so a packet arriving a little late does not leave the vehicle standing still before it lands. 1.0 = no slack.")]
@@ -91,7 +91,7 @@ namespace tumvt.sumounity
 
             if (!Mathf.Approximately(stepTime, lastStepTime))
             {
-                // This section, was adjusted using AI assistance
+                // This section was adjusted using AI assistance
                 //
                 // A new SUMO step arrived: ease from where we ARE to the new target.
                 //
@@ -120,7 +120,7 @@ namespace tumvt.sumounity
                 targetRot = sumoRot;
             }
 
-            // This section, was adjusted using AI assistance
+            // This section was adjusted using AI assistance
             //
             // Clamp01 is deliberate: never extrapolate past the last known SUMO pose,
             // so a late packet can never push a vehicle through a wall or another car.

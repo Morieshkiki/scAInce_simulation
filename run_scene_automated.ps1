@@ -1,6 +1,6 @@
 # Automated script to open and run a Unity scene in batch mode
 #
-# This section, was adjusted using AI assistance
+# This section was adjusted using AI assistance
 # (the UnityPath and LogFilePath defaults below)
 param (
     [string]$UnityPath = "C:\Program Files\Unity\Hub\Editor\6000.4.1f1\Editor\Unity.exe",

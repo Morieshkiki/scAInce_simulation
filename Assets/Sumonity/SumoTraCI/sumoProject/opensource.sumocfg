@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- This section, was adjusted using AI assistance -->
-<!-- Static Darmstadt setup (LLM removed). Uses the osm.base network brought in
-     from the former SUMO_LLM_Agent folder, with a fixed hypothetical demand
-     (trams, buses, passenger cars) and Luisenplatz-realistic speed caps.
-     No random demand, no agent. Originals backed up as *.bak. -->
+<!-- This section was adjusted using AI assistance -->
+<!-- Static Darmstadt setup. Uses the corrected osm.base network with a fixed
+     hypothetical demand (trams, buses, passenger cars) and Luisenplatz-realistic
+     speed caps. No random demand. Originals backed up as *.bak. -->
 
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 

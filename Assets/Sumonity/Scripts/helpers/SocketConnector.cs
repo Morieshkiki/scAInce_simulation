@@ -59,11 +59,11 @@ namespace tumvt.sumounity
         {
             Thread.Sleep(1000);
 
-            // The SUMO host (the LLM app, script.py) serves on this port. Unity's
-            // client used to connect exactly once with no retry, so if Play was
-            // pressed before the LLM app was listening the thread died silently and
-            // no cars ever appeared. Retry for ~30 s so connection ordering is
-            // forgiving (start the LLM app, then press Play — either order works).
+            // The external SUMO server serves on this port. Unity's client used to
+            // connect exactly once with no retry, so if Play was pressed before the
+            // server was listening the thread died silently and no cars ever
+            // appeared. Retry for ~30 s so connection ordering is forgiving, meaning
+            // the server and Play can be started in either order.
             int attempts = 0;
             while (true)
             {

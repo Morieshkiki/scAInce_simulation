@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- This section, was adjusted using AI assistance:
+<!-- This section was adjusted using AI assistance:
      static hypothetical Darmstadt demand (trams, buses, passenger cars) with
-     Luisenplatz-realistic speed caps, adapted from the former LLM manual_demand. -->
+     Luisenplatz-realistic speed caps. -->
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
     <vType id="tram" vClass="tram" maxSpeed="6.94" speedFactor="1.0"/>
     <vType id="bus" vClass="bus" maxSpeed="8.33" speedFactor="1.0"/>
